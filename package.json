@@ -4,7 +4,10 @@
   "description": "",
   "private": true,
   "dependencies": {
-    "egg": "^1.0.0"
+    "egg": "^1.0.0",
+    "egg-mongoose": "^1.1.1",
+    "egg-view-nunjucks": "^2.0.0",
+    "jsonwebtoken": "^7.3.0"
   },
   "devDependencies": {
     "autod": "^2.7.1",

@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <title>会员中心</title>
+  </head>
+  <body>
+    <div>
+        <p>用户信息</p>
+    </div>
+  </body>
+</html>
