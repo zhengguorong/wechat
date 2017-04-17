@@ -21,5 +21,12 @@ module.exports = appInfo => {
       enable: false,
     },
   };
+  config.middleware = [ 'errorHandler' ]; // 使用koa的中间件
+  config.auth = {
+    test: 'tst',
+  };
+  config.errorHandler = {
+    match: '/api',
+  };
   return config;
 };
