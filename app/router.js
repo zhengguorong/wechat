@@ -10,5 +10,5 @@ module.exports = app => {
   // 接口路由
   app.post('/api/user/register', 'api.user.register');
   app.post('/api/user/login', 'api.user.login');
-  app.post('/api/user', auth.isLogin, 'api.user.getUser');
+  app.get('/api/user', auth.isLogin, 'api.user.getUser');
 };

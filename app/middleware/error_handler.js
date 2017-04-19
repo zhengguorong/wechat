@@ -5,11 +5,8 @@ module.exports = () => {
     try {
       yield next;
     } catch (err) {
-      // this.app.emit('error', err, this);
-      this.body = {
-        isSuccess: false,
-        message: err.message,
-      };
+      if (this.status !== 401) this.status = 400;
+      this.body = err.message;
     }
   };
 };

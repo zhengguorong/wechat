@@ -43,7 +43,9 @@ module.exports = app => {
     }
     * getUserById(userId) {
       const user = yield app.model.user.findOne({ userId }, '-_id -password -__v');
-      if (user) return user;
+      if (user) {
+        return user;
+      }
       throw new Error('用户不存在');
     }
   }

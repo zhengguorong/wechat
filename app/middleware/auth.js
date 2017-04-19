@@ -4,7 +4,9 @@ const jwt = require('jsonwebtoken');
 const isLogin = function* (next) {
   const token = this.request.header.authorization;
   if (!token) {
-    throw new Error('token不能为空');
+    this.response.status = 401;
+    this.response.body = 'token不能为空';
+    return;
   }
   // 验证token是否过期
   try {
@@ -18,12 +20,14 @@ const isLogin = function* (next) {
       this.set('authorization', 'Bearer ' + token);
     }
   } catch (err) {
+    this.response.status = 401;
     // token过期
     if (err.name === 'TokenExpiredError') {
-      throw new Error('token过期');
+      this.response.body = 'token过期';
     } else if (err.name === 'JsonWebTokenError') {
-      throw new Error('token无效');
+      this.response.body = 'token无效';
     }
+    return;
   }
   yield next;
 };
