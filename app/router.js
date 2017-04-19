@@ -13,5 +13,5 @@ module.exports = app => {
   app.get('/api/user', auth.isLogin, 'api.user.getUser');
 
   // 微信相关接口
-  app.get('/api/wechat/getOpenId/:code', 'api.wechat.getOpenId');
+  app.get('/api/wechat/login/:code', 'api.wechat.login');
 };
