@@ -2,6 +2,9 @@
 
 module.exports = appInfo => {
   const config = {};
+  // 微信相关
+  config.appId = 'wx8bc5d288383a85c9';
+  config.appSecret = '121dd6705a31acf18eb489ae9b8380aa';
 
   // should change to your own
   config.keys = appInfo.name + '_1492054139103_7031';
