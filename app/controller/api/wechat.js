@@ -31,7 +31,8 @@ module.exports = app => {
         this.ctx.body = accessToken.access_token;
       } else {
         const url = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${app.config.appId}&secret=${app.config.appSecret}`;
-        const result = yield this.ctx.curl(url, { dataType: 'json' });
+        const response = yield this.ctx.curl(url, { dataType: 'json' });
+        const result = response.data;
       // 将accessToken存在session中
         if (result.access_token) {
         // 计算失效时间
