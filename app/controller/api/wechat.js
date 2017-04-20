@@ -23,6 +23,29 @@ module.exports = app => {
       this.ctx.status = result.status;
 
     }
+    * getAccessToken() {
+      const nowDateTime = new Date().getTime();
+      const accessToken = this.ctx.session.accessToken;
+      // 如果未过期，直接获取session中access_token
+      if (accessToken && accessToken.expiresTime > nowDateTime) {
+        this.ctx.body = accessToken.access_token;
+      } else {
+        const url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${app.config.appId}&secret=${app.config.appSecret}';
+        const result = yield this.ctx.curl(url, { dataType: 'json' });
+      // 将accessToken存在session中
+        if (result.access_token) {
+        // 计算失效时间
+          const expiresTime = nowDateTime + result.expires_in * 1000;
+          result.expiresTime = expiresTime;
+          this.ctx.session.accessToken = result;
+          this.ctx.body = result.access_token;
+        } else {
+          this.ctx.status = 400;
+          this.ctx.body = result;
+        }
+      }
+
+    }
   }
   return WechatController;
 };
