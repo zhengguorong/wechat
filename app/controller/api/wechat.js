@@ -30,7 +30,7 @@ module.exports = app => {
       if (accessToken && accessToken.expiresTime > nowDateTime) {
         this.ctx.body = accessToken.access_token;
       } else {
-        const url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${app.config.appId}&secret=${app.config.appSecret}';
+        const url = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${app.config.appId}&secret=${app.config.appSecret}`;
         const result = yield this.ctx.curl(url, { dataType: 'json' });
       // 将accessToken存在session中
         if (result.access_token) {
