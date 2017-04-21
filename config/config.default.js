@@ -6,6 +6,13 @@ module.exports = appInfo => {
   config.appId = 'wx8bc5d288383a85c9';
   config.appSecret = '121dd6705a31acf18eb489ae9b8380aa';
 
+  // 百度face相关
+  config.baidu = {
+    face: {
+      appId: 'B6CeTHgrU5EXGiXlbfrlqCkW',
+      appSecret: '5yN0idaBoU21VEDvQDpoAnz9DtXZXwFT',
+    },
+  };
   // should change to your own
   config.keys = appInfo.name + '_1492054139103_7031';
   config.jwtSecret = 'zhengguorong';
