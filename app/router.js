@@ -18,4 +18,6 @@ module.exports = app => {
 
   // 百度相关接口
   app.get('/api/baidu/getAccessToken', 'api.baidu.getAccessToken');
+
+  app.resources('demand', '/api/demand', auth.isLogin, 'api.demand');
 };
